@@ -24,6 +24,7 @@
       - [Considerações finais](#considerações-finais)
     - [Como funciona o HashMap em Java?](#como-funciona-o-hashmap-em-java)
     - [Como funciona o HashSet em Java?](#como-funciona-o-hashset-em-java)
+    - [POO em Java](#poo-em-java)
 
 ## Conceitos
 
@@ -419,3 +420,135 @@ public class HashSetExample {
 ```
 
 Lembre-se de que a ordem dos elementos no `HashSet` pode variar e não é garantida. Se você precisar de uma ordem específica, considere o uso de outras implementações, como `LinkedHashSet` ou `TreeSet`.
+
+### POO em Java
+
+O paradigma orientado a objetos (POO) é um modelo de programação que se baseia em conceitos como classes, objetos, herança, encapsulamento e polimorfismo. Vou explicar cada um desses conceitos-chave no contexto do Java com exemplos.
+
+1 - **Classe**:
+Uma classe é um modelo ou planta baixa para criar objetos. Ela define os atributos (variáveis) e métodos (funções) que os objetos criados a partir dela terão.
+
+Exemplo em Java:
+
+```java
+public class Carro {
+    // Atributos
+    String marca;
+    String modelo;
+    int ano;
+
+    // Métodos
+    public void ligar() {
+        System.out.println("O carro está ligado.");
+    }
+
+    public void desligar() {
+        System.out.println("O carro está desligado.");
+    }
+}
+```
+
+2 - **Objeto**:
+Um objeto é uma instância de uma classe, uma entidade concreta que contém dados e comportamento.
+
+Exemplo em Java, criando objetos a partir da classe "Carro":
+
+```java
+Carro meuCarro = new Carro();
+meuCarro.marca = "Toyota";
+meuCarro.modelo = "Corolla";
+meuCarro.ano = 2022;
+
+Carro outroCarro = new Carro();
+outroCarro.marca = "Ford";
+outroCarro.modelo = "Mustang";
+outroCarro.ano = 2021;
+```
+
+3 - **Herança**:
+Herança é um mecanismo que permite que uma classe herde atributos e métodos de outra classe. A classe que herda é chamada de subclasse, e a classe da qual ela herda é chamada de superclasse.
+
+Exemplo em Java:
+
+```java
+public class Veiculo {
+    String cor;
+    int velocidadeMaxima;
+}
+
+public class Carro extends Veiculo {
+    int numeroPortas;
+}
+
+// Usando a classe Carro
+Carro meuCarro = new Carro();
+meuCarro.cor = "Azul";
+meuCarro.velocidadeMaxima = 200;
+meuCarro.numeroPortas = 4;
+```
+
+4 -  **Encapsulamento**:
+O encapsulamento é o conceito de esconder os detalhes de implementação de uma classe, expondo apenas a interface necessária para interagir com ela. Isso é feito usando modificadores de acesso (como public, private, protected) para controlar o acesso aos membros da classe.
+
+Exemplo em Java:
+
+```java
+public class Pessoa {
+    private String nome;
+    private int idade;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String novoNome) {
+        nome = novoNome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int novaIdade) {
+        if (novaIdade >= 0) {
+            idade = novaIdade;
+        }
+    }
+}
+```
+
+5 - **Polimorfismo**:
+Polimorfismo permite que objetos de classes diferentes sejam tratados de maneira uniforme. Isso pode ser alcançado por meio de sobrescrita de métodos ou interfaces.
+
+Exemplo em Java usando sobrescrita de método:
+
+```java
+public class Animal {
+    public void fazerSom() {
+        System.out.println("O animal faz algum som.");
+    }
+}
+
+public class Cachorro extends Animal {
+    @Override
+    public void fazerSom() {
+        System.out.println("O cachorro late.");
+    }
+}
+
+public class Gato extends Animal {
+    @Override
+    public void fazerSom() {
+        System.out.println("O gato mia.");
+    }
+}
+
+// Usando polimorfismo
+Animal meuAnimal = new Cachorro();
+meuAnimal.fazerSom(); // Saída: "O cachorro late"
+
+meuAnimal = new Gato();
+meuAnimal.fazerSom(); // Saída: "O gato mia"
+```
+
+Esses são conceitos fundamentais do paradigma orientado a objetos no Java, que permitem criar sistemas organizados, flexíveis e reutilizáveis.
