@@ -23,6 +23,7 @@
       - [Verificando se a lista está vazia](#verificando-se-a-lista-está-vazia)
       - [Considerações finais](#considerações-finais)
     - [Como funciona o HashMap em Java?](#como-funciona-o-hashmap-em-java)
+    - [Como funciona o HashSet em Java?](#como-funciona-o-hashset-em-java)
 
 ## Conceitos
 
@@ -383,3 +384,38 @@ Aqui está um resumo de como um `HashMap` funciona em Java:
 O `HashMap` é uma estrutura de dados altamente eficiente para recuperação de valores com base em chaves, desde que as funções de hash das chaves distribuam os elementos de forma uniforme no `HashMap`. No entanto, é importante observar que as chaves em um `HashMap` devem ser únicas, mas os valores podem ser repetidos.
 
 Lembre-se de que a complexidade de tempo média para operações de inserção, recuperação e remoção em um `HashMap` é O(1) quando a função de hash é bem distribuída e O(n) no pior caso. Portanto, escolher uma função de hash adequada e considerar fatores como a carga do `HashMap` (fator de carga) é importante para manter o desempenho ideal.
+
+### Como funciona o HashSet em Java?
+
+Em Java, `HashSet` é uma implementação da interface `Set` que é baseada na estrutura de dados de tabela de dispersão (hash table). Ele é projetado para armazenar elementos sem duplicatas e não garante a ordem dos elementos. Aqui está um resumo de como o `HashSet` funciona:
+
+1. **Armazenamento baseado em tabela de dispersão:** O `HashSet` usa uma tabela de dispersão interna para armazenar os elementos. Cada elemento é mapeado para um índice na tabela de acordo com sua função de hash.
+
+2. **Função de hash:** Cada elemento do `HashSet` deve implementar o método `hashCode()` da classe `Object`, que retorna um valor inteiro representando o hash do objeto. A função de hash é usada para calcular o índice da tabela de dispersão onde o elemento será armazenado.
+
+3. **Resolução de colisões:** Às vezes, dois objetos diferentes podem ter o mesmo valor de hash. Isso é chamado de colisão. O `HashSet` lida com colisões usando listas vinculadas. Cada índice na tabela de dispersão pode conter uma lista de elementos que têm o mesmo valor de hash. Quando ocorre uma colisão, o `HashSet` adiciona o novo elemento à lista vinculada correspondente.
+
+4. **Verificação de duplicatas:** Antes de adicionar um elemento ao `HashSet`, ele verifica se o elemento já está presente usando o método `equals()`. Se o elemento for igual a um elemento já presente no conjunto, ele não será adicionado, pois o `HashSet` não permite elementos duplicados.
+
+5. **Não mantém ordem:** O `HashSet` não mantém a ordem dos elementos. Se você precisa de uma coleção que mantenha a ordem de inserção, você pode usar o `LinkedHashSet`, que é uma implementação do `Set` que mantém a ordem dos elementos em que foram inseridos.
+
+Aqui está um exemplo de como usar um `HashSet` em Java:
+
+```java
+import java.util.HashSet;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+
+        set.add("Maçã");
+        set.add("Banana");
+        set.add("Laranja");
+        set.add("Maçã"); // Não será adicionado, pois é uma duplicata
+
+        System.out.println(set); // Imprimirá [Laranja, Banana, Maçã]
+    }
+}
+```
+
+Lembre-se de que a ordem dos elementos no `HashSet` pode variar e não é garantida. Se você precisar de uma ordem específica, considere o uso de outras implementações, como `LinkedHashSet` ou `TreeSet`.
