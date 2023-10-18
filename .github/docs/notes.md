@@ -25,6 +25,8 @@
     - [Como funciona o HashMap em Java?](#como-funciona-o-hashmap-em-java)
     - [Como funciona o HashSet em Java?](#como-funciona-o-hashset-em-java)
     - [POO em Java](#poo-em-java)
+    - [Encapsulamento em Java](#encapsulamento-em-java)
+    - [Herança em Java](#herança-em-java)
 
 ## Conceitos
 
@@ -552,3 +554,99 @@ meuAnimal.fazerSom(); // Saída: "O gato mia"
 ```
 
 Esses são conceitos fundamentais do paradigma orientado a objetos no Java, que permitem criar sistemas organizados, flexíveis e reutilizáveis.
+
+### Encapsulamento em Java
+
+O encapsulamento é um dos princípios fundamentais da programação orientada a objetos (POO) e é amplamente aplicado na linguagem de programação Java. Ele se baseia na ideia de ocultar os detalhes internos de uma classe e fornecer uma interface pública para interagir com os objetos dessa classe. O encapsulamento é implementado em Java principalmente através do uso de modificadores de acesso, como `public`, `private`, `protected` e `default`.
+
+Aqui está como o encapsulamento funciona em Java:
+
+1. **Atributos Privados**: A maioria dos atributos de uma classe deve ser declarada como privados (usando o modificador `private`). Isso significa que os atributos não podem ser acessados diretamente por código fora da classe.
+
+   ```java
+   public class Exemplo {
+       private int idade;
+   }
+   ```
+
+2. **Métodos Públicos**: Para permitir que outros objetos acessem ou modifiquem os atributos privados, você deve fornecer métodos públicos, chamados "métodos de acesso" ou "getters" e "setters". Os getters são usados para obter o valor dos atributos e os setters para definir o valor dos atributos.
+
+   ```java
+   public class Exemplo {
+       private int idade;
+
+       public int getIdade() {
+           return idade;
+       }
+
+       public void setIdade(int novaIdade) {
+           idade = novaIdade;
+       }
+   }
+   ```
+
+3. **Encapsulamento em Ação**: Ao usar métodos getters e setters, você pode controlar como os atributos são acessados e modificados. Isso permite que você adicione lógica de validação, execução de ações especiais ou qualquer outra manipulação necessária.
+
+   ```java
+   Exemplo objeto = new Exemplo();
+   objeto.setIdade(25); // Usando o setter para definir a idade.
+   int idade = objeto.getIdade(); // Usando o getter para obter a idade.
+   ```
+
+4. **Proteção de Dados**: O encapsulamento ajuda a proteger os dados da classe, evitando que sejam corrompidos ou acessados de maneira inadequada. Ele também permite que você faça alterações internas na implementação da classe sem afetar o código que a utiliza, desde que a interface pública (métodos públicos) permaneça a mesma.
+
+5. **Modificadores de Acesso**: Além do `private`, Java oferece outros modificadores de acesso, como `public`, `protected` e o pacote (sem especificador). Você pode escolher o modificador que melhor atenda às necessidades de encapsulamento de sua classe.
+
+   - `private`: Acesso restrito somente à própria classe.
+   - `public`: Acesso irrestrito de qualquer lugar.
+   - `protected`: Acesso dentro da mesma classe, subclasse e pacote.
+   - (sem especificador): Acesso dentro da mesma classe e pacote.
+
+Em resumo, o encapsulamento em Java é alcançado definindo os atributos de uma classe como privados e fornecendo métodos públicos (getters e setters) para acessar e modificar esses atributos. Isso ajuda a proteger os dados da classe e oferece um nível de abstração e controle sobre como esses dados são manipulados.
+
+### Herança em Java
+
+A herança é um dos princípios fundamentais da programação orientada a objetos e é amplamente utilizada na linguagem de programação Java. Ela permite que uma classe (chamada de subclasse ou classe derivada) herde atributos e métodos de outra classe (chamada de superclasse ou classe base). A herança no Java é usada para promover a reutilização de código e criar uma hierarquia de classes.
+
+Aqui estão os conceitos-chave de como a herança funciona no Java:
+
+1. **Superclasse e Subclasse**: No Java, você começa definindo uma classe base (superclasse) com atributos e métodos comuns que você deseja compartilhar com outras classes. Em seguida, você cria uma classe derivada (subclasse) que herda os membros da superclasse.
+
+2. **Palavra-chave `extends`**: Para criar uma subclasse que herda de uma superclasse, você utiliza a palavra-chave `extends`. A subclasse declara a superclasse da seguinte forma:
+
+   ```java
+   public class Subclasse extends Superclasse {
+       // Atributos e métodos da subclasse
+   }
+   ```
+
+3. **Membros Herdados**: A subclasse herda todos os atributos e métodos públicos e protegidos da superclasse. Os membros privados não são herdados.
+
+4. **Sobrescrita de Métodos**: Uma subclasse pode fornecer uma implementação específica para um método herdado da superclasse. Isso é chamado de sobrescrita de método. A assinatura do método (nome, tipo de retorno e parâmetros) na subclasse deve ser a mesma que na superclasse.
+
+   ```java
+   @Override
+   public void metodoDaSuperclasse() {
+       // Implementação da subclasse
+   }
+   ```
+
+5. **Chamada a Métodos da Superclasse**: Você pode chamar métodos da superclasse na subclasse usando a palavra-chave `super`. Isso é útil quando você deseja executar o código da superclasse antes ou depois de adicionar a lógica da subclasse.
+
+   ```java
+   public void metodoDaSubclasse() {
+       super.metodoDaSuperclasse(); // Chama o método da superclasse
+       // Implementação da subclasse
+   }
+   ```
+
+6. **Construtores**: O construtor da superclasse pode ser chamado a partir do construtor da subclasse usando `super()`. Isso garante que os atributos herdados sejam inicializados corretamente.
+
+   ```java
+   public Subclasse() {
+       super(); // Chama o construtor da superclasse
+       // Inicialização adicional da subclasse
+   }
+   ```
+
+A herança é uma forma poderosa de organizar e estender classes no Java. No entanto, lembre-se de que o Java suporta apenas herança única (uma classe só pode herdar de uma superclasse), o que limita a flexibilidade em comparação com outros mecanismos de herança múltipla encontrados em algumas outras linguagens. Além disso, é importante usar a herança com sabedoria para evitar acoplamento excessivo e problemas de manutenção de código.
