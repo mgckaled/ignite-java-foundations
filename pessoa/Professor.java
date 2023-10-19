@@ -12,4 +12,8 @@ public class Professor extends Pessoa {
     this.salario = salario;
   }
 
+  String imprimirDadosDaPessoa() {
+    System.out.println(super.imprimirDadosDaPessoa());
+    return "Você é Professor";
+  }
 }

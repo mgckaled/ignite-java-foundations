@@ -9,7 +9,6 @@ public class TesteDePessoa {
     professor.setIdade(35);
     professor.setSalario(50000);
 
-
     System.out.println(professor.imprimirDadosDaPessoa());
 
     Aluno aluno = new Aluno();

@@ -4,6 +4,7 @@
 
 - [Anotações importantes](#anotações-importantes)
   - [Sumário](#sumário)
+  - [Dicas](#dicas)
   - [Conceitos](#conceitos)
     - [O que é Java?](#o-que-é-java)
     - [O que é JDK?](#o-que-é-jdk)
@@ -27,6 +28,11 @@
     - [POO em Java](#poo-em-java)
     - [Encapsulamento em Java](#encapsulamento-em-java)
     - [Herança em Java](#herança-em-java)
+    - [Polimorfismo em Java](#polimorfismo-em-java)
+
+## Dicas
+
+- Não é possível instanciar interfaces
 
 ## Conceitos
 
@@ -650,3 +656,56 @@ Aqui estão os conceitos-chave de como a herança funciona no Java:
    ```
 
 A herança é uma forma poderosa de organizar e estender classes no Java. No entanto, lembre-se de que o Java suporta apenas herança única (uma classe só pode herdar de uma superclasse), o que limita a flexibilidade em comparação com outros mecanismos de herança múltipla encontrados em algumas outras linguagens. Além disso, é importante usar a herança com sabedoria para evitar acoplamento excessivo e problemas de manutenção de código.
+
+### Polimorfismo em Java
+
+O polimorfismo é um dos conceitos fundamentais na programação orientada a objetos e é amplamente utilizado na linguagem de programação Java. O polimorfismo permite que objetos de diferentes classes sejam tratados de maneira uniforme, proporcionando uma maior flexibilidade e extensibilidade em seu código. Existem dois tipos principais de polimorfismo em Java: polimorfismo de sobrecarga (compile-time) e polimorfismo de sobrescrita (runtime).
+
+1. Polimorfismo de Sobrecarga (Compile-time Polymorphism):
+   Este tipo de polimorfismo ocorre durante a fase de compilação do código e envolve a sobrecarga de métodos em uma classe. A sobrecarga de métodos é quando você tem vários métodos com o mesmo nome em uma classe, mas com diferentes parâmetros. O compilador decide qual método chamar com base no número e nos tipos de argumentos fornecidos. Isso é comumente conhecido como "sobrecarga de método".
+
+   Exemplo de polimorfismo de sobrecarga:
+
+   ```java
+   public class Calculator {
+       public int add(int a, int b) {
+           return a + b;
+       }
+       public double add(double a, double b) {
+           return a + b;
+       }
+   }
+   ```
+
+   No exemplo acima, a classe `Calculator` possui dois métodos `add`, um para inteiros e outro para números de ponto flutuante. O compilador decide qual método chamar com base nos tipos de argumentos passados.
+
+2. Polimorfismo de Sobrescrita (Runtime Polymorphism):
+   Este tipo de polimorfismo ocorre durante a execução do programa e envolve a substituição de métodos em classes relacionadas por meio da herança. O polimorfismo de sobrescrita é frequentemente chamado de "sobrescrita de método". Para que ele funcione, você deve ter uma classe pai (superclasse) e uma classe filha (subclasse) com um método na superclasse que é sobrescrito na subclasse.
+
+   Exemplo de polimorfismo de sobrescrita:
+
+   ```java
+   class Animal {
+       public void makeSound() {
+           System.out.println("Animal makes a sound");
+       }
+   }
+
+   class Dog extends Animal {
+       @Override
+       public void makeSound() {
+           System.out.println("Dog barks");
+       }
+   }
+
+   class Cat extends Animal {
+       @Override
+       public void makeSound() {
+           System.out.println("Cat meows");
+       }
+   }
+   ```
+
+   Nesse exemplo, as classes `Dog` e `Cat` herdam da classe `Animal` e sobrescrevem o método `makeSound`. Quando você chama `makeSound` em uma instância de `Animal`, a implementação específica da classe concreta (Dog ou Cat) é chamada em tempo de execução, permitindo o polimorfismo.
+
+O polimorfismo é uma técnica poderosa que ajuda a escrever código flexível e extensível em Java, permitindo que você trabalhe com objetos de diferentes tipos de maneira mais genérica. Isso é fundamental para o princípio da programação orientada a objetos e ajuda na criação de hierarquias de classes bem organizadas e reutilizáveis.
