@@ -31,10 +31,13 @@
     - [Polimorfismo em Java](#polimorfismo-em-java)
     - [Exceções em Java](#exceções-em-java)
     - [Qual a função do `static` em Java?](#qual-a-função-do-static-em-java)
+    - [Exemplos de Construtores](#exemplos-de-construtores)
 
 ## Dicas
 
 - Não é possível instanciar interfaces
+- No construtor não há retorno (`return`), logo não há necessidade de incluir `void`.
+- O construtor pode ter ou não parâmetros
 
 ## Conceitos
 
@@ -824,3 +827,97 @@ A palavra-chave `static` é usada para criar membros (variáveis ou métodos) qu
    ```
 
 O uso de membros estáticos é comum quando você deseja compartilhar informações ou funcionalidades em toda a classe, independentemente das instâncias individuais. No entanto, é importante notar que variáveis e métodos estáticos não têm acesso aos membros de instância não estáticos, porque eles não estão associados a uma instância específica da classe. Em vez disso, eles acessam apenas outros membros estáticos ou membros públicos de instância por meio de uma instância específica da classe.
+
+### Exemplos de Construtores
+
+1. **Construtor Padrão (sem argumentos):**
+
+   ```java
+   public class ConstrutorExemplo {
+       public ConstrutorExemplo() {
+           System.out.println("Construtor Padrão");
+       }
+   
+       public static void main(String[] args) {
+           ConstrutorExemplo obj = new ConstrutorExemplo(); // Chama o construtor padrão
+       }
+   }
+   ```
+
+2. **Construtor com Argumentos:**
+
+   ```java
+   public class ConstrutorComArgumentos {
+       private int valor;
+
+       public ConstrutorComArgumentos(int valorInicial) {
+           valor = valorInicial;
+       }
+
+       public void exibirValor() {
+           System.out.println("Valor: " + valor);
+       }
+
+       public static void main(String[] args) {
+           ConstrutorComArgumentos obj = new ConstrutorComArgumentos(42); // Chama o construtor com argumentos
+           obj.exibirValor(); // Exibe o valor inicial
+       }
+   }
+   ```
+
+3. **Sobrecarga de Construtores:**
+
+   ```java
+   public class SobrecargaConstrutores {
+       private int valor;
+
+       public SobrecargaConstrutores() {
+           valor = 0; // Construtor padrão
+       }
+
+       public SobrecargaConstrutores(int valorInicial) {
+           valor = valorInicial; // Construtor com argumento
+       }
+
+       public void exibirValor() {
+           System.out.println("Valor: " + valor);
+       }
+
+       public static void main(String[] args) {
+           SobrecargaConstrutores obj1 = new SobrecargaConstrutores(); // Chama o construtor padrão
+           SobrecargaConstrutores obj2 = new SobrecargaConstrutores(42); // Chama o construtor com argumento
+           obj1.exibirValor(); // Exibe o valor inicializado pelo construtor padrão
+           obj2.exibirValor(); // Exibe o valor inicializado pelo construtor com argumento
+       }
+   }
+   ```
+
+4. **Construtor de Cópia (Clonagem de Objetos):**
+
+   ```java
+   public class ConstrutorCopia {
+       private int valor;
+
+       public ConstrutorCopia(int valorInicial) {
+           valor = valorInicial;
+       }
+
+       // Construtor de cópia
+       public ConstrutorCopia(ConstrutorCopia outro) {
+           valor = outro.valor;
+       }
+
+       public void exibirValor() {
+           System.out.println("Valor: " + valor);
+       }
+
+       public static void main(String[] args) {
+           ConstrutorCopia objOriginal = new ConstrutorCopia(42); // Cria um objeto original
+           ConstrutorCopia objCopia = new ConstrutorCopia(objOriginal); // Cria uma cópia
+           objOriginal.exibirValor(); // Exibe o valor do objeto original
+           objCopia.exibirValor(); // Exibe o valor do objeto de cópia
+       }
+   }
+   ```
+
+Esses exemplos demonstram vários tipos de construtores em Java, incluindo o construtor padrão, construtores com argumentos, sobrecarga de construtores e um construtor de cópia para clonagem de objetos. Cada tipo de construtor é útil em diferentes situações, dependendo das necessidades do seu programa.
