@@ -29,6 +29,8 @@
     - [Encapsulamento em Java](#encapsulamento-em-java)
     - [Herança em Java](#herança-em-java)
     - [Polimorfismo em Java](#polimorfismo-em-java)
+    - [Exceções em Java](#exceções-em-java)
+    - [Qual a função do `static` em Java?](#qual-a-função-do-static-em-java)
 
 ## Dicas
 
@@ -709,3 +711,116 @@ O polimorfismo é um dos conceitos fundamentais na programação orientada a obj
    Nesse exemplo, as classes `Dog` e `Cat` herdam da classe `Animal` e sobrescrevem o método `makeSound`. Quando você chama `makeSound` em uma instância de `Animal`, a implementação específica da classe concreta (Dog ou Cat) é chamada em tempo de execução, permitindo o polimorfismo.
 
 O polimorfismo é uma técnica poderosa que ajuda a escrever código flexível e extensível em Java, permitindo que você trabalhe com objetos de diferentes tipos de maneira mais genérica. Isso é fundamental para o princípio da programação orientada a objetos e ajuda na criação de hierarquias de classes bem organizadas e reutilizáveis.
+
+### Exceções em Java
+
+Em Java, as exceções são eventos que ocorrem durante a execução de um programa e que podem interromper o fluxo normal de execução. As exceções são usadas para lidar com situações de erro, como divisão por zero, acesso a um elemento fora dos limites de um array, tentativa de abrir um arquivo que não existe, entre outros. O tratamento de exceções é uma parte importante da programação em Java, e é feito por meio do uso de blocos try-catch, juntamente com outras construções relacionadas.
+
+Aqui estão os principais conceitos relacionados a exceções em Java:
+
+1. **Tipos de Exceção:** Em Java, as exceções são representadas como objetos de classes que herdam da classe `java.lang.Exception`. Existem duas categorias principais de exceções: exceções verificadas (checked exceptions) e exceções não verificadas (unchecked exceptions).
+
+   - Exceções verificadas: Essas são exceções que o compilador Java requer que você lide explicitamente usando blocos try-catch ou declarando-as em uma cláusula `throws` na assinatura de um método. Por exemplo, `IOException` é uma exceção verificada.
+
+   - Exceções não verificadas: São exceções que não precisam ser tratadas explicitamente pelo código. Elas geralmente ocorrem devido a erros de programação, como divisão por zero ou acesso a índices inválidos em arrays. Por exemplo, `NullPointerException` é uma exceção não verificada.
+
+2. **Blocos try-catch:** Você pode usar blocos `try` e `catch` para lidar com exceções. O código que pode gerar uma exceção é colocado no bloco `try`, enquanto o código que lida com a exceção é colocado no bloco `catch`.
+
+   ```java
+   try {
+       // Código que pode gerar uma exceção
+   } catch (ExcecaoType e) {
+       // Código para lidar com a exceção
+   }
+   ```
+
+3. **Bloco finally:** Você pode opcionalmente usar um bloco `finally` para conter código que será executado, independentemente de uma exceção ser lançada ou não.
+
+   ```java
+   try {
+       // Código que pode gerar uma exceção
+   } catch (ExcecaoType e) {
+       // Código para lidar com a exceção
+   } finally {
+       // Código que será executado sempre
+   }
+   ```
+
+4. **Lançamento de exceções:** Você pode lançar uma exceção explicitamente usando a palavra-chave `throw`. Isso é útil quando você deseja indicar que ocorreu um erro específico em seu código.
+
+   ```java
+   throw new MinhaExcecao("Ocorreu um erro personalizado.");
+   ```
+
+5. **Declaração de exceções em métodos:** Se um método pode lançar exceções, você deve declará-las na assinatura do método usando a palavra-chave `throws`. Isso informa aos chamadores do método que eles precisam lidar com essas exceções.
+
+   ```java
+   public void meuMetodo() throws MinhaExcecao {
+       // Código que pode lançar MinhaExcecao
+   }
+   ```
+
+6. **Cláusula throws:** Você pode usar a cláusula `throws` em um método para indicar que o método pode lançar exceções verificadas.
+
+   ```java
+   public void meuMetodo() throws MinhaExcecao {
+       // Código que pode lançar MinhaExcecao
+   }
+   ```
+
+7. **Exceções personalizadas:** Você pode criar suas próprias classes de exceção personalizadas estendendo `Exception` ou `RuntimeException`, dependendo do tipo de exceção que deseja criar.
+
+   ```java
+   public class MinhaExcecao extends Exception {
+       // Construtores e métodos personalizados
+   }
+   ```
+
+Lidar adequadamente com exceções é importante para criar código robusto e confiável em Java. Certifique-se de entender as exceções específicas que seu código pode lançar ou capturar e trate-as apropriadamente para evitar falhas inesperadas.
+
+### Qual a função do `static` em Java?
+
+A palavra-chave `static` é usada para criar membros (variáveis ou métodos) que pertencem à classe em si, em vez de pertencerem a instâncias específicas (objetos) dessa classe. A principal função do modificador `static` é associar membros a uma classe em vez de a objetos individuais. Isso tem várias implicações:
+
+1. **Variáveis Estáticas (Static Fields):** Quando você declara uma variável como `static`, ela é compartilhada entre todas as instâncias da classe. Isso significa que todas as instâncias da classe têm acesso a essa variável e compartilham o mesmo valor. Variáveis estáticas são muitas vezes usadas para armazenar valores comuns a todas as instâncias da classe.
+
+   Exemplo:
+
+   ```java
+   public class MinhaClasse {
+       static int contador = 0;
+
+       public MinhaClasse() {
+           contador++;
+       }
+   }
+   ```
+
+2. **Métodos Estáticos (Static Methods):** Métodos estáticos pertencem à classe em si, não a instâncias específicas. Isso significa que você pode chamar um método estático diretamente na classe, sem precisar criar uma instância da classe. Métodos estáticos são frequentemente usados para funções utilitárias que não dependem do estado de objetos individuais.
+
+   Exemplo:
+
+   ```java
+   public class MinhaClasse {
+       static void metodoEstatico() {
+           // Código do método estático
+       }
+   }
+
+   // Chamando o método estático
+   MinhaClasse.metodoEstatico();
+   ```
+
+3. **Blocos Estáticos (Static Blocks):** Blocos estáticos são usados para inicializar variáveis estáticas ou executar código que precisa ser executado apenas uma vez quando a classe é carregada. Eles são úteis para tarefas de inicialização que não dependem de instâncias da classe.
+
+   Exemplo:
+
+   ```java
+   public class MinhaClasse {
+       static {
+           // Código de inicialização estática
+       }
+   }
+   ```
+
+O uso de membros estáticos é comum quando você deseja compartilhar informações ou funcionalidades em toda a classe, independentemente das instâncias individuais. No entanto, é importante notar que variáveis e métodos estáticos não têm acesso aos membros de instância não estáticos, porque eles não estão associados a uma instância específica da classe. Em vez disso, eles acessam apenas outros membros estáticos ou membros públicos de instância por meio de uma instância específica da classe.
