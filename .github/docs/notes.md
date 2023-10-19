@@ -32,6 +32,7 @@
     - [Exceções em Java](#exceções-em-java)
     - [Qual a função do `static` em Java?](#qual-a-função-do-static-em-java)
     - [Exemplos de Construtores](#exemplos-de-construtores)
+    - [*Wrapper classes* em Java](#wrapper-classes-em-java)
 
 ## Dicas
 
@@ -921,3 +922,39 @@ O uso de membros estáticos é comum quando você deseja compartilhar informaç�
    ```
 
 Esses exemplos demonstram vários tipos de construtores em Java, incluindo o construtor padrão, construtores com argumentos, sobrecarga de construtores e um construtor de cópia para clonagem de objetos. Cada tipo de construtor é útil em diferentes situações, dependendo das necessidades do seu programa.
+
+### *Wrapper classes* em Java
+
+As *wrapper classes* (ou classes de invólucro) são um conjunto de classes que fornecem um invólucro ao redor dos tipos primitivos. Isso permite que os tipos primitivos sejam tratados como objetos em situações em que os objetos são necessários. As wrapper classes são usadas para converter tipos primitivos em objetos, facilitando sua manipulação em contextos que requerem objetos, como coleções (por exemplo, Listas, Mapas) ou ao trabalhar com APIs que aceitam apenas objetos.
+
+Aqui estão as principais wrapper classes em Java e os tipos primitivos que elas representam:
+
+1. `Integer`: Representa valores inteiros. O tipo primitivo correspondente é `int`.
+
+2. `Long`: Representa valores longos. O tipo primitivo correspondente é `long`.
+
+3. `Short`: Representa valores curtos. O tipo primitivo correspondente é `short`.
+
+4. `Byte`: Representa valores de byte. O tipo primitivo correspondente é `byte`.
+
+5. `Float`: Representa valores de ponto flutuante de precisão simples. O tipo primitivo correspondente é `float`.
+
+6. `Double`: Representa valores de ponto flutuante de precisão dupla. O tipo primitivo correspondente é `double`.
+
+7. `Character`: Representa caracteres únicos. O tipo primitivo correspondente é `char`.
+
+8. `Boolean`: Representa valores booleanos. O tipo primitivo correspondente é `boolean`.
+
+As wrapper classes são usadas para criar objetos a partir de valores primitivos ou para extrair valores primitivos de objetos. Elas também fornecem métodos e constantes úteis para realizar operações comuns em valores primitivos. Por exemplo, as classes `Integer` e `Double` têm métodos para converter uma string em seu tipo correspondente, realizar operações matemáticas e muito mais.
+
+Aqui está um exemplo de como usar uma wrapper class, como `Integer`, para converter um valor primitivo em um objeto:
+
+```java
+int valorPrimitivo = 42;
+Integer valorObjeto = Integer.valueOf(valorPrimitivo); // Conversão de int para Integer
+
+System.out.println("Valor primitivo: " + valorPrimitivo);
+System.out.println("Valor objeto: " + valorObjeto);
+```
+
+O uso de wrapper classes é comum em situações onde tipos primitivos precisam ser tratados como objetos, especialmente ao trabalhar com coleções e APIs que esperam objetos em vez de tipos primitivos.
